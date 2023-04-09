@@ -1,0 +1,17 @@
+version: "3.8"
+volumes:
+  exclude:
+    driver: local
+services:
+  go-server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: try-gomock
+    working_dir: /go/src/try-gomock
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/go/src/try-gomock
+    ports:
+      - 8080:8080
